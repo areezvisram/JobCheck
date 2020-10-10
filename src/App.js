@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Overview from "./components/Overview";
+import AddJob from "./components/AddJob"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/overview" component={Overview} />
+          <Route path="/addJob" component={AddJob}/>
           <Route component={Error} />
         </Switch>
     </div>

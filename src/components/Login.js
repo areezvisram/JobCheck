@@ -6,6 +6,7 @@ import "./styles/Login.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //const [loggedIn, setLoginStatus] = useState(false);
   const history = useHistory();
 
   function validateForm() {
@@ -33,7 +34,7 @@ export default function Login() {
         if (response["status"] === "OK") {
           history.push({
             pathname: "/overview",
-            state: { token: response["token"] },
+            state: { token: response["token"], loggedIn: true, comingFrom: "login" },
           });
         }
       })
@@ -51,7 +52,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
+        <FormGroup controlId="password">
           <FormLabel>Password</FormLabel>
           <FormControl
             type="password"
