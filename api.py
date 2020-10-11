@@ -125,6 +125,7 @@ def get_resource():
     # change the last argument to get specific attribute
     return jsonify({'name': g.user.username, 'id': g.user.id})
 
+
 @app.route('/api/getApplications', methods=["POST"])
 def get_applications():
     try:
@@ -144,6 +145,7 @@ def get_applications():
     
 
 @app.route('/api/addApplication', methods=["POST"])
+@cross_origin()
 def add_application():
     try:
         req_json = request.get_json()
