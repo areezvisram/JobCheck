@@ -8,12 +8,78 @@ function Overview() {
     const [id, setId] = useState("");
     const history = useHistory();
     const location = useLocation();
+    const [userPassAdd, setUserPassAdd] = useState("");
+    var token = '';
+    var userpass = '';
+    
 
     function checkLocation() {
         try {
+            userpass = location.state.login;
+            setUserPassAdd(userpass);
             let comingFrom = location.state.comingFrom;
-            const token = location.state.token;
-            var login = token + ":unused"; 
+            if (comingFrom === "addJob") {
+                console.log("entered from add job")
+                var obj = {
+                    method: "GET",
+                    headers: {
+                      Accept: "application/json",
+                      "Access-Control-Allow-Origin": "*",
+                      "Content-Type": "application/json",
+                      Authorization: "Basic " + Buffer.from(userpass).toString("base64"),
+                    },
+                  };
+              
+                  fetch("http://127.0.0.1:5000/api/token", obj)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      console.log(data);
+                      const response = data;
+                      if (response["status"] === "OK") {
+                        token = response['token'];
+                        var login = token + ":unused";
+                        fetch("http://127.0.0.1:5000/api/resource", {
+                                headers: {
+                                Accept: "application/json",
+                                "Access-Control-Allow-Origin": "*",
+                                "Content-Type": "application/json",
+                                Authorization: "Basic " + Buffer.from(login).toString("base64"),
+                                },
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                setUserName(data["name"]);
+                                var id = data["id"];
+                                setId(id);
+                                fetch("http://127.0.0.1:5000/api/getApplications", {
+                                    method: 'POST',
+                                    headers: {
+                                        Accept: "application/json",
+                                        "Access-Control-Allow-Origin": "*",
+                                        "Content-Type": "application/json",
+                                        //Authorization: "Basic " + Buffer.from(login).toString("base64"),
+                                    },
+                                    body: JSON.stringify({"id": id})
+                                })
+                                .then((response) => response.json())
+                                .then((data2) => {
+                                    console.log(data2);
+                                    var jobObject = data2['applications'];
+                                    var jobs = Object.values(jobObject);                        
+                                    setJobApplications(jobs); 
+                                    console.log(jobs);
+                                })
+                            });
+                      }
+                    })
+                    .catch(error => alert(error));
+            }
+            else {
+                console.log("entered from login");
+                token = location.state.token;
+                
+    
+            var login = token + ":unused";
             fetch("http://127.0.0.1:5000/api/resource", {
                     headers: {
                     Accept: "application/json",
@@ -46,11 +112,14 @@ function Overview() {
                         console.log(jobs);
                     })
                 });
+            }
+
             
         } catch(error) {
-            history.push({
-                pathname: "/login"
-              });
+            // history.push({
+            //     pathname: "/login"
+            //   });
+            console.log(error);
         }
     }
 
@@ -78,7 +147,7 @@ function Overview() {
                 )
             })}
 
-            <AddJobButton user_id={id}></AddJobButton>
+            <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton>
             
         </div>
     

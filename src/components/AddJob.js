@@ -6,11 +6,14 @@ function AddJob() {
     const history = useHistory();
     const location = useLocation();
     const [userId, setUserId] = useState("");
+    const [userpass, setUserPass] = useState("");
 
     function checkLocation() {
         try {
             let comingFrom = location.state.comingFrom;
             const user_id = location.state.user_id;
+            const userPass = location.state.userpass;
+            setUserPass(userPass);
             setUserId(user_id);
         } catch(error) {
             history.push({
@@ -26,7 +29,7 @@ function AddJob() {
     return (
         <div>
             <p>User Id: {userId}</p>
-            <AddJobForm></AddJobForm>
+            <AddJobForm user_id={userId} userpass={userpass}></AddJobForm>
         </div>
     )
 }

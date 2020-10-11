@@ -34,7 +34,7 @@ export default function Login() {
         if (response["status"] === "OK") {
           history.push({
             pathname: "/overview",
-            state: { token: response["token"], loggedIn: true, comingFrom: "login" },
+            state: { token: response["token"], loggedIn: true, comingFrom: "login", login:login },
           });
         }
       })

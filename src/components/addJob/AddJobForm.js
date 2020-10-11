@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 
-function AddJobForm() {
+function AddJobForm({user_id, token, userpass}) {
     const [company, setCompany] = useState("");
     const [position, setPosition] = useState("");
     const [link, setLink] = useState("");
@@ -9,10 +10,45 @@ function AddJobForm() {
     const [portalPassword, setPortalPassword] = useState("");
     const [documents, setDocuments] = useState([]);
 
+    const history = useHistory();
+
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(documents);
+        var data = {
+            "id": user_id,
+            "position": position,
+            "company": company,
+            "link_to_application": link,
+            "application_deadline": deadline,
+            "application_status": status,
+            "portal_password": portalPassword,
+            "documents_required": documents.toString()
+        }
+
+        var obj = {
+            method: 'POST',
+            headers: {
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        };
+
+        fetch("http://127.0.0.1:5000/api/addApplication", obj)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if(data['status'] === 1) {
+            history.push({
+                pathname: "/overview",
+                state: { comingFrom: "addJob", login:userpass },
+              });
+          }
+        })
+        .catch(error => alert(error));
     }
+    
 
     function setJobStatus(event) {
         setStatus(event.target.value);
