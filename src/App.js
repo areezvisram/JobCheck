@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Overview from "./components/Overview";
 import AddJob from "./components/AddJob"
+import EditJob from "./components/EditJob"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/overview" component={Overview} />
           <Route path="/addJob" component={AddJob}/>
+          <Route path="/editJob" component={EditJob}/>
           <Route component={Error} />
         </Switch>
     </div>

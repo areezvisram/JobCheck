@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
-import AddJobButton from './overview/AddJobButton'
+import AddJobButton from './overview/AddJobButton';
+import DeleteJobButton from './overview/DeleteJobButton';
+import EditJobButton from './overview/EditJobButton'
 
 function Overview() {
     const [userName, setUserName] = useState("");
@@ -18,8 +20,8 @@ function Overview() {
             userpass = location.state.login;
             setUserPassAdd(userpass);
             let comingFrom = location.state.comingFrom;
-            if (comingFrom === "addJob") {
-                console.log("entered from add job")
+            if (comingFrom === "addJob" || comingFrom === "editJob") {
+                console.log("entered from add job or edit job")
                 var obj = {
                     method: "GET",
                     headers: {
@@ -143,6 +145,9 @@ function Overview() {
                         <p>Documents: {data.documents_required}</p>
                         <p>Link to Application: {data.link_to_application}</p>
                         <p>Portal Password: {data.portal_password}</p>
+                        <p>ID: {data.id}</p>
+                        <DeleteJobButton application_id={data.id}></DeleteJobButton>
+                        <EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton>
                     </div>
                 )
             })}
