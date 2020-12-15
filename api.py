@@ -201,10 +201,11 @@ def applications_view():
     
     return jsonify(application_dict)
 
-@app.route('/api/deleteApplication')
+@app.route('/api/deleteApplication', methods=["POST"])
+@cross_origin()
 def application_delete():
     req_json = request.get_json()
-    application_id = req_json['id']
+    application_id = req_json['id'] if req_json['id'] else None
 
     application = JobApplication.query.filter_by(id=application_id).first()
 
@@ -215,6 +216,22 @@ def application_delete():
 
     return jsonify(response)
 
+@app.route('/api/updateApplication', methods=["POST"])
+@cross_origin()
+def application_update():
+    req_json = request.get_json()
+    application_id = req_json['id'] if req_json['id'] else None
+    application_status = req_json['status'] if req_json['status'] else None
+
+    application = JobApplication.query.filter_by(id=application_id).first()
+
+    application.application_status = application_status
+
+    db.session.commit()
+
+    response = {'status': 1, 'message': "Record updated"}
+
+    return jsonify(response)
 
 @app.before_first_request
 def create_tables():
