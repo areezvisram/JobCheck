@@ -13,3 +13,9 @@
     text-emphasis: none;
     text-decoration: none;
 }
+
+@media (max-width: 600px) {
+    .navbar {
+        font-size: 1.8em;
+    }
+}
