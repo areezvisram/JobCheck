@@ -2,10 +2,12 @@ import React from 'react'
 import './styles/Home.css'
 import background from '../images/bottom.png'
 import logo from '../images/logo.png'
+import Navbar from './Navbar'
 
 function Home() {
     return (
         <div className="home-page">
+            <Navbar />
             <img src={background} alt="background" className="bottom"></img>
             <img src={logo} alt="logo" className="logo"></img>
             <div className="button-wrapper">
