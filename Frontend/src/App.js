@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 import Home from "./components/Home";
-import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Overview from "./components/Overview";
 import AddJob from "./components/AddJob"
@@ -12,8 +11,7 @@ import EditJob from "./components/EditJob"
 function App() {
 
   return (
-    <div>
-        <Navbar />
+    <div>        
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/login" component={Login} />
