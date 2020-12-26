@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./styles/Login.css";
+import logo from '../images/logo.png'
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,6 +14,7 @@ export default function Login() {
   }
 
   function handleSubmit(e) {
+    console.log("tried to log in");
     e.preventDefault();
     var login = email + ":" + password;
     var obj = {
@@ -42,33 +43,76 @@ export default function Login() {
   }
 
   return (
-    <div className="Login">
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" size="large">
-          <FormLabel>Email</FormLabel>
-          <FormControl
-            autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="password">
-          <FormLabel>Password</FormLabel>
-          <FormControl
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        <Button
-          variant="primary"
-          size="lg"
-          disabled={!validateForm()}
-          type="submit"
-        >
-          Login
-        </Button>
-      </form>
+    <div id="form_wrapper">
+    <div id="form_left">
+      <img src={logo} alt="computer icon" />
     </div>
+    <form id="form_right" onSubmit={handleSubmit}>
+      <h1>Login</h1>
+      <div className="input_container">
+        <i className="fas fa-envelope"></i>
+        <input
+          placeholder="Email"
+          value = {email}
+          onChange={(e) => setEmail(e.target.value)}
+          // type="email"
+          name="Email"
+          id="field_email"
+          className="input_field"
+        />
+      </div>
+      <div className="input_container">
+        <i className="fas fa-lock"></i>
+        <input
+          placeholder="Password"
+          type="password"
+          name="Password"
+          id="field_password"
+          className="input_field"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button
+        type="submit"
+        value="Login"
+        id="input_submit"
+        className="input_field"
+        disabled={!validateForm()}
+      >Login</button>
+      <span>Forgot <a href="#"> Username / Password ?</a></span>
+      <span id="create_account">
+        <a href="\register">Don't have an account? Register Now ➡ </a>
+      </span>
+    </form>
+  </div>
+    // <div classNameName="Login">
+    //   <form onSubmit={handleSubmit}>
+    //     <FormGroup controlId="email" size="large">
+    //       <FormLabel>Email</FormLabel>
+    //       <FormControl
+    //         autoFocus
+    //         value={email}
+    //         onChange={(e) => setEmail(e.target.value)}
+    //       />
+    //     </FormGroup>
+    //     <FormGroup controlId="password">
+    //       <FormLabel>Password</FormLabel>
+    //       <FormControl
+    //         type="password"
+    //         value={password}
+    //         onChange={(e) => setPassword(e.target.value)}
+    //       />
+    //     </FormGroup>
+    //     <Button
+    //       variant="primary"
+    //       size="lg"
+    //       disabled={!validateForm()}
+    //       type="submit"
+    //     >
+    //       Login
+    //     </Button>
+    //   </form>
+    // </div>
   );
 }
