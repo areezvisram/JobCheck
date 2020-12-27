@@ -1,4 +1,4 @@
-@media all and (min-width: 480px) {
+/* @media all and (min-width: 480px) {
     .Register {
       padding: 60px 0;
     }
@@ -7,4 +7,156 @@
       margin: 0 auto;
       max-width: 320px;
     }
+  } */
+
+
+  :root {
+    --body_gradient_left: #1c9954;
+    --body_gradient_right: #155294;
+    --form_bg: #ffffff;
+    --input_bg: #e5e5e5;
+    --input_hover: #eaeaea;
+    --submit_bg: #1fcc44;
+    --submit_hover: #40e263;
+    --icon_color: #6b6b6b;
   }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    font-family: 'Fredoka One', cursive;
+    background-image: linear-gradient(
+      to right,
+      var(--body_gradient_left),
+      var(--body_gradient_right)
+    );
+    display: flex;
+  }
+  
+  #form_wrapper {
+    width: 1000px;
+    height: 700px;    
+    margin-left: 45%;
+    margin-top: 10%;
+    background-color: var(--form_bg);
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5vw;
+    padding: 5vh 15px;
+  }
+
+  #form_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #form_left img {
+    width: 350px;
+    height: 350px;
+  }
+
+  #form_right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    padding: 10% 5%;
+  }
+
+  .input_container {
+    background-color: var(--input_bg);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  .input_container:hover {
+    background-color: var(--input_hover);
+  }
+  
+  .input_container,
+  #input_submit {
+    height: 60px;
+    border-radius: 30px;
+    width: 100%;
+  }
+  
+  .input_field {
+    color: var(--icon_color);
+    background-color: inherit;
+    width: 90%;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 30px;
+  }
+  
+  .input_field:hover,
+  .input_field:focus {
+    outline: none;
+  }
+  
+  #input_submit {
+    background-color: var(--submit_bg);
+    padding-left: 0;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  #input_submit:hover {
+    background-color: var(--submit_hover);
+    transition: background-color, 1s;
+    cursor: pointer;
+  }
+
+  #input_submit:disabled {
+    /* border: 1px solid #999999; */
+    /* background-color: #cccccc; */
+    /* color: #666666; */
+    opacity: 0.5;
+    cursor: default;  
+  }
+
+  h1,
+span {
+  text-align: center;
+}
+
+#create_account {
+  display: block;
+  position: relative;
+  top: 30px;
+  font-size: 1.2em;
+}
+
+a {
+  text-decoration: none;
+  color: var(--submit_bg);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--submit_hover);
+}
+
+i {
+  color: var(--icon_color);
+}
+
+@media screen and (max-width: 768px) {
+  #form_wrapper {
+    grid-template-columns: 1fr;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  #form_left {
+    display: none;
+  }
+}
