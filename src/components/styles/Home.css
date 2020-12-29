@@ -5,6 +5,7 @@
     background-color: #f7f8fc;
     overflow-x: hidden;
     overflow-y: hidden;
+    --submit_hover: #40e263;
 }
 
 .logo {

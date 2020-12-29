@@ -3,6 +3,9 @@ import { useLocation, useHistory } from "react-router-dom";
 import AddJobButton from './overview/AddJobButton';
 import DeleteJobButton from './overview/DeleteJobButton';
 import EditJobButton from './overview/EditJobButton'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import './styles/Overview.css'
 
 function Overview() {
     const [userName, setUserName] = useState("");
@@ -129,12 +132,51 @@ function Overview() {
         checkLocation();
     },[]);
 
-   
 
+    function renderTableData() {
+        return jobApplications.map((data, index) => {
+            const { company, position, application_status, application_deadline, documents_required, link_to_application, portal_password } = data;
+            return (
+                <Tr>
+                <Td className="border">{company}</Td>
+                <Td className="border">{position}</Td>
+                <Td className="border">{application_status}</Td>
+                <Td className="border">{application_deadline}</Td>
+                <Td className="border">{documents_required}</Td>
+                <Td className="border">{link_to_application}</Td>
+                <Td className="border">{portal_password}</Td>
+                <Td className="border"><EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton><DeleteJobButton application_id={data.id}></DeleteJobButton></Td>
+
+                {/* application_id={data.id} userpass={userPassAdd} */}
+            </Tr>
+            )
+        })
+    }
 
     return (
-        <div>
-            <h1>{userName}</h1>
+        <div className="background">
+            <h1 className="overview-title">Your Job Applications</h1>
+            <Table className="border-table">
+            <Thead>
+                <Tr>
+                    <Th className="border">Company</Th>
+                    <Th className="border">Position</Th>
+                    <Th className="border">Application Status</Th>
+                    <Th className="border">Application Deadline</Th>
+                    <Th className="border">Documents</Th>
+                    <Th className="border">Link To Application</Th>
+                    <Th className="border">Portal Password</Th>
+                    <Th className="border">Options</Th>
+                </Tr>
+            </Thead>
+            <Tbody>
+                {renderTableData()}
+            </Tbody>
+            </Table>
+
+        </div>  
+
+            /*{ <h1>{userName}</h1>
             {jobApplications.map((data, key) => {
                 return (
                     <div key={key}>
@@ -150,12 +192,9 @@ function Overview() {
                         <EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton>
                     </div>
                 )
-            })}
+            })} }*/
 
-            <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton>
-            
-        </div>
-    
+            /*{ <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton> }*/
     
     );
 }

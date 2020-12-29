@@ -1,0 +1,44 @@
+.background {
+    height: 100vh;
+    font-family: 'Fredoka One', cursive;
+    background-image: linear-gradient(
+      to right,
+      var(--body_gradient_left),
+      var(--body_gradient_right)
+    );
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --body_gradient_left: #1c9954;
+    --body_gradient_right: #155294;
+    --form_bg: #ffffff;
+    --input_bg: #e5e5e5;
+    --input_hover: #eaeaea;
+    --submit_bg: #1fcc44;
+    --submit_hover: #40e263;
+    --icon_color: #6b6b6b;
+}
+
+.border {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.border-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 90vw;
+    margin-left: 5%;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2em;
+    /* font-family: 'Fredoka One', cursive; */
+    background-color: white;
+}
+
+.overview-title {
+    font-size: 4em;
+    text-decoration: underline;
+}

@@ -1,0 +1,52 @@
+.edit-button {
+    font-family: 'Fredoka One', cursive;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 0.5em;
+    border: 1px solid black;    
+    outline: none;
+    /* border-radius: 10px; */
+}
+
+.edit-button:hover {
+    background-color: #40e263;
+}
+
+.delete-button {
+    font-family: 'Fredoka One', cursive;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 0.5em;
+    border: 1px solid black;    
+    outline: none;
+}
+
+.delete-button:hover {
+    background-color: #40e263;   
+}
+
+.modal {
+    font-family: 'Fredoka One', cursive;
+}
+
+.modal-button {
+    font-family: 'Fredoka One', cursive;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid black;    
+    outline: none;
+}
+
+.modal-button:hover {
+    background-color: #40e263;   
+}
+
+.submit-button {
+    margin-top: 10px;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid black;    
+    outline: none;
+}

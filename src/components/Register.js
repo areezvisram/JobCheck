@@ -50,33 +50,35 @@ function Register() {
     }
   
     return (
-      <div id="form_wrapper">
-      <div id="form_left">
-        <img src={logo} alt="computer icon" />
+      <div className="background">
+        <div id="form_wrapper">
+        <div id="form_left">
+          <img src={logo} alt="computer icon" />
+        </div>
+        <form id="form_right" onSubmit={handleSubmit}>
+          <h1>Register</h1>
+          <div className="input_container">
+            <i className="fas fa-envelope"></i>
+            <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
+          </div>
+          <div className="input_container">
+            <i className="fas fa-envelope"></i>
+            <input placeholder="Confirm Email" value = {confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
+          </div>        
+          <div className="input_container">
+            <i className="fas fa-lock"></i>
+            <input placeholder="Password" type="password" name="Password" id="field_password" className="input_field" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          </div>
+          <div className="input_container">
+            <i className="fas fa-lock"></i>
+            <input placeholder="Confirm Password" type="password" name="Password" id="field_password" className="input_field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+          </div>        
+          <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Register</button>
+          <span id="create_account">
+            <a href="\login">Already have an account? Login now ➡ </a>
+          </span>
+        </form>
       </div>
-      <form id="form_right" onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <div className="input_container">
-          <i className="fas fa-envelope"></i>
-          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
-        </div>
-        <div className="input_container">
-          <i className="fas fa-envelope"></i>
-          <input placeholder="Confirm Email" value = {confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
-        </div>        
-        <div className="input_container">
-          <i className="fas fa-lock"></i>
-          <input placeholder="Password" type="password" name="Password" id="field_password" className="input_field" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        </div>
-        <div className="input_container">
-          <i className="fas fa-lock"></i>
-          <input placeholder="Confirm Password" type="password" name="Password" id="field_password" className="input_field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-        </div>        
-        <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Register</button>
-        <span id="create_account">
-          <a href="\login">Already have an account? Login now ➡ </a>
-        </span>
-      </form>
     </div>
       // <div className="Register">
       //disabled={!validateForm()}

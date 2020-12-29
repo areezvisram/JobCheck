@@ -10,7 +10,7 @@
   } */
 
 
-  :root {
+  /* :root {
     --body_gradient_left: #1c9954;
     --body_gradient_right: #155294;
     --form_bg: #ffffff;
@@ -36,13 +36,35 @@
       var(--body_gradient_right)
     );
     display: flex;
-  }
+  } */
   
+.background {
+  height: 100vh;
+  font-family: 'Fredoka One', cursive;
+  background-image: linear-gradient(
+    to right,
+    var(--body_gradient_left),
+    var(--body_gradient_right)
+  );
+  display: flex;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --body_gradient_left: #1c9954;
+  --body_gradient_right: #155294;
+  --form_bg: #ffffff;
+  --input_bg: #e5e5e5;
+  --input_hover: #eaeaea;
+  --submit_bg: #1fcc44;
+  --submit_hover: #40e263;
+  --icon_color: #6b6b6b;
+}
+
   #form_wrapper {
     width: 1000px;
     height: 700px;    
-    margin-left: 45%;
-    margin-top: 10%;
+    /* margin-left: 45%;
+    margin-top: 10%; */
     background-color: var(--form_bg);
     border-radius: 50px;
     display: grid;

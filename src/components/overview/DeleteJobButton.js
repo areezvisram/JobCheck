@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/OverviewComponents.css'
 
 function DeleteJobButton({ application_id }) {
 
@@ -27,7 +28,7 @@ function DeleteJobButton({ application_id }) {
 
     return (
         <div onClick={deleteJob}>
-            <button>Delete Job</button>
+            <button className="delete-button">Delete Job</button>
         </div>
     )
 
