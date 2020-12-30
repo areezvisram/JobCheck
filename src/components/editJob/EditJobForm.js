@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import '../styles/OverviewComponents.css'
 
 function EditJobForm({application_id, userpass, onClickFunction}) {
     const [status, setStatus] = useState("");
 
-    const history = useHistory();
+    // const history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();

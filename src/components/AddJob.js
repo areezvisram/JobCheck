@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useHistory } from "react-router-dom";
 import AddJobForm from './addJob/AddJobForm'
+import './styles/AddJob.css'
 
 function AddJob() {
     const history = useHistory();
@@ -27,8 +28,9 @@ function AddJob() {
     },[]);
 
     return (
-        <div>
-            <p>User Id: {userId}</p>
+        <div className="background">
+            {/* <p>User Id: {userId}</p> */}
+            <h1 className="overview-title">Add New Job Application</h1>
             <AddJobForm user_id={userId} userpass={userpass}></AddJobForm>
         </div>
     )

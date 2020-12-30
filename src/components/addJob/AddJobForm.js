@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
+import '../styles/OverviewComponents.css'
 
 function AddJobForm({user_id, token, userpass}) {
     const [company, setCompany] = useState("");
@@ -70,7 +71,7 @@ function AddJobForm({user_id, token, userpass}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="add-form">
             <label>Company: </label>
             <input type="text" value={company} onChange={(e) => setCompany(e.target.value)}></input><br></br>
             <label>Position: </label>
@@ -89,15 +90,15 @@ function AddJobForm({user_id, token, userpass}) {
             </select><br></br>
             <label>Portal Password: </label>
             <input type="password" value={portalPassword} onChange={(e) => setPortalPassword(e.target.value)}></input><br></br>
-            <label>Documents Required: </label>
-            <select id="documents" onChange={setRequiredDocs} multiple>
+            <label className="select-label">Documents Required: </label>
+            <select id="documents" onChange={setRequiredDocs} multiple className="select">
                 <option value="None">None</option>
                 <option value="Resume">Resume</option>
                 <option value="Cover Letter">Cover Letter</option>
                 <option value="Transcript">Transcript</option>
                 <option value="Essay Questions">Essay Questions</option>
             </select><br></br>
-            <button type="submit" disabled={!validateForm()}>Submit</button>
+            <button type="submit" disabled={!validateForm()} className="submit-button-form">Submit</button>
         
         </form>
     )
