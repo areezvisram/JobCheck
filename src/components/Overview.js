@@ -6,7 +6,9 @@ import EditJobButton from './overview/EditJobButton'
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import './styles/Overview.css'
-import AutosizeInput from 'react-input-autosize'
+import UnlockPasswordButton from './overview/UnlockPasswordButton'
+
+
 
 function Overview() {
     const [userName, setUserName] = useState("");
@@ -15,6 +17,8 @@ function Overview() {
     const history = useHistory();
     const location = useLocation();
     const [userPassAdd, setUserPassAdd] = useState("");
+    const [show, setShow] = useState(false);
+    const [passwordState, setPasswordState] = useState("password")
     var token = '';
     var userpass = '';
     
@@ -133,6 +137,9 @@ function Overview() {
         checkLocation();
     },[]);
 
+    function updatePasswordState() {
+        setPasswordState("text")
+    }
 
     function renderTableData() {
         return jobApplications.map((data, index) => {
@@ -145,7 +152,7 @@ function Overview() {
                 <Td className="border">{application_deadline}</Td>
                 <Td className="border">{documents_required}</Td>
                 <Td className="border">{link_to_application}</Td>
-                <Td className="border"><input type="password" value={portal_password} readOnly className="password-input"></input></Td>
+                <Td className="border"><input type={passwordState} value={portal_password} readOnly className="password-input"></input></Td>
                 <Td className="border"><EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton><DeleteJobButton application_id={data.id}></DeleteJobButton></Td>
 
                 {/* application_id={data.id} userpass={userPassAdd} */}
@@ -175,8 +182,10 @@ function Overview() {
             </Tbody>
             </Table>
 
-            <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton>
-
+            <div className="overview-buttons">
+                <AddJobButton user_id={id} userpass={userPassAdd} className="flex_child"></AddJobButton>
+                <UnlockPasswordButton clickHandler={updatePasswordState} className="flex_child" />
+            </div>
         </div>  
 
             /*{ <h1>{userName}</h1>

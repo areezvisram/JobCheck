@@ -1,3 +1,5 @@
+
+
 .edit-button {
     font-family: 'Fredoka One', cursive;
     background-color: #1fcc44;
@@ -6,6 +8,7 @@
     border: 1px solid black;    
     outline: none;
     /* border-radius: 10px; */
+    
 }
 
 .edit-button:hover {
@@ -59,7 +62,7 @@
     border: 1px solid black;    
     outline: none;
     width: 15%;
-    margin-left: 40%;
+    margin-left: 32%;
 }
 
 .add-button:hover {
@@ -90,3 +93,64 @@ label {
     border: 1px solid black;    
     outline: none;
 }
+
+.eye-button {
+    margin-top: 2%;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 2em;
+    border: 1px solid black;    
+    outline: none;
+    width: 18%;
+    margin-left: 5%;
+}
+
+.eye-button:hover {
+    background-color: #40e263;
+}
+
+.submit-button-modal {
+    margin-top: 10px;
+    background-color: #1fcc44;
+    cursor: pointer;
+    font-size: 1.5em;
+    border: 1px solid black;    
+    outline: none;
+    width: 30%;
+    margin-left: 35%;
+}
+
+.input_container_modal {
+    background-color: #e5e5e5;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+  
+  
+  .input_container_modal,
+  #input_submit {
+    height: 60px;
+    border-radius: 30px;
+    width: 100%;
+  }
+  
+  .input_field {
+    color: var(--icon_color);
+    background-color: inherit;
+    width: 90%;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-left: 30px;
+  }
+  
+  .input_field:hover,
+  .input_field:focus {
+    outline: none;
+  }
+
+  #eye {
+      color: black;
+      padding-right: 10px;
+  }
