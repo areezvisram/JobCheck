@@ -1,5 +1,3 @@
-
-
 .edit-button {
     font-family: 'Fredoka One', cursive;
     background-color: #1fcc44;
@@ -154,3 +152,80 @@ label {
       color: black;
       padding-right: 10px;
   }
+
+
+
+@media(max-width: 1335px) {
+    .add-form {
+        font-size: 2em; 
+        margin-left: 25%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 1119px) {
+    .add-form {
+        font-size: 2em; 
+        margin-left: 20%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 921px) {
+    .add-form {
+        font-size: 1.7em; 
+        margin-left: 20%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 782px) {
+    .overview-title {
+        font-size: 3em;
+    }
+    .add-form {
+        font-size: 1.4em; 
+        margin-left: 20%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 666px) {
+    .add-form {
+        font-size: 1.4em; 
+        margin-left: 12%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 609px) {
+    .add-form {
+        font-size: 1.4em; 
+        margin-left: 8%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 581px) {
+    .add-form {
+        font-size: 1.4em; 
+        margin-left: 5%;
+        margin-top: 1%;
+    }
+}
+
+@media(max-width: 500px) {
+    .add-form {
+        font-size: 1.2em; 
+        margin-left: 5%;
+        margin-top: 1%;
+    }
+
+    .background {
+        overflow-y: scroll;
+    }
+
+    .select {
+        margin-top: 5px;
+    }
+}

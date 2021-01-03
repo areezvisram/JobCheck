@@ -27,14 +27,11 @@ function UnlockPasswordButton({ clickHandler }) {
                 <Modal.Header closeButton>
                     <Modal.Title>Login with Master Password to Unlock Password</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><PasswordForm clickHandler={clickHandler} /></Modal.Body>
+                <Modal.Body><PasswordForm clickHandler={clickHandler} submitClickHandler={handleClose} /></Modal.Body>
                 <Modal.Footer>
                     <button onClick={handleClose} className="modal-button">
                     Close
                     </button>
-                    {/* <button onClick={handleClose} className="modal-button">
-                    Save Changes
-                    </button> */}
                 </Modal.Footer>
             </Modal>
         </>

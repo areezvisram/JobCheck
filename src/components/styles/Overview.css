@@ -64,3 +64,11 @@
     -ms-flex:  1 1 auto;
     flex:  1 1 auto;
 }
+
+@media(max-width: 782px) {
+    .overview-title {
+        font-size: 3em;
+    }
+
+    
+}

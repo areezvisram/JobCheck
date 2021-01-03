@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/OverviewComponents.css'
 
-function PasswordForm({ clickHandler }) {
+function PasswordForm({ clickHandler, submitClickHandler }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
@@ -30,6 +30,7 @@ function PasswordForm({ clickHandler }) {
             const response = data;
             if (response["status"] === "OK") {
                 clickHandler();
+                submitClickHandler();
                 
             }
           })

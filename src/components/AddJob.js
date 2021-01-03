@@ -29,7 +29,6 @@ function AddJob() {
 
     return (
         <div className="background">
-            {/* <p>User Id: {userId}</p> */}
             <h1 className="overview-title">Add New Job Application</h1>
             <AddJobForm user_id={userId} userpass={userpass}></AddJobForm>
         </div>
