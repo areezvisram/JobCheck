@@ -7,14 +7,14 @@ function AddJobForm({user_id, token, userpass}) {
     const [position, setPosition] = useState("");
     const [link, setLink] = useState("");
     const [deadline, setDeadline] = useState("");
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("Not Applied");
     const [portalPassword, setPortalPassword] = useState("");
-    const [documents, setDocuments] = useState([]);
+    const [documents, setDocuments] = useState(["None"]);
 
     const history = useHistory();
 
     function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault();        
         var data = {
             "id": user_id,
             "position": position,
@@ -59,7 +59,7 @@ function AddJobForm({user_id, token, userpass}) {
         var selected = [];
         for (var option of document.getElementById("documents").options) {
             if (option.selected) {
-                selected.push(option.value);
+                selected.push(` ${option.value}`);
             }
         }
 

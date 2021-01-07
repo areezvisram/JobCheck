@@ -26,11 +26,12 @@ function EditJobButton({ application_id, userpass }) {
         setShow(false);
         reload();
     }
+
     const handleShow = () => setShow(true);
 
     return (
         <>
-            <button className="edit-button" onClick={handleShow}>Edit Application Status</button>
+            <button className="edit-button" onClick={handleShow}>Edit Job Status</button>
             <Modal show={show} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Job Application Status</Modal.Title>

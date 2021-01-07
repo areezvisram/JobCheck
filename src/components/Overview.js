@@ -16,8 +16,7 @@ function Overview() {
     const [id, setId] = useState("");
     const history = useHistory();
     const location = useLocation();
-    const [userPassAdd, setUserPassAdd] = useState("");
-    const [show, setShow] = useState(false);
+    const [userPassAdd, setUserPassAdd] = useState("");    
     const [passwordState, setPasswordState] = useState("password")
     var token = '';
     var userpass = '';
@@ -187,27 +186,6 @@ function Overview() {
                 <UnlockPasswordButton clickHandler={updatePasswordState} className="flex_child" />
             </div>
         </div>  
-
-            /*{ <h1>{userName}</h1>
-            {jobApplications.map((data, key) => {
-                return (
-                    <div key={key}>
-                        <h4>Company: {data.company}</h4>
-                        <p>Position: {data.position}</p>
-                        <p>Application Status: {data.application_status}</p>
-                        <p>Application Deadline: {data.application_deadline}</p>
-                        <p>Documents: {data.documents_required}</p>
-                        <p>Link to Application: {data.link_to_application}</p>
-                        <p>Portal Password: {data.portal_password}</p>
-                        <p>ID: {data.id}</p>
-                        <DeleteJobButton application_id={data.id}></DeleteJobButton>
-                        <EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton>
-                    </div>
-                )
-            })} }*/
-
-            /*{ <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton> }*/
-    
     );
 }
 

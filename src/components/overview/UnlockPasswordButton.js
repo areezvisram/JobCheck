@@ -25,7 +25,7 @@ function UnlockPasswordButton({ clickHandler }) {
             <button className="eye-button" onClick={handleShow}><i className="fas fa-eye" id="eye"></i>Show Passwords</button>
             <Modal show={show} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
-                    <Modal.Title>Login with Master Password to Unlock Password</Modal.Title>
+                    <Modal.Title>Login with Master Password to Unlock Passwords</Modal.Title>
                 </Modal.Header>
                 <Modal.Body><PasswordForm clickHandler={clickHandler} submitClickHandler={handleClose} /></Modal.Body>
                 <Modal.Footer>
