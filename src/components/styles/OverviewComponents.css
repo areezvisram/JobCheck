@@ -156,12 +156,21 @@ label {
   }
 
 
+.overview-navbar {
+    text-align: right;
+    font-size: 2em;
+    margin-top: 5px;
+}
 
 @media(max-width: 1335px) {
     .add-form {
         font-size: 2em; 
         margin-left: 25%;
         margin-top: 1%;
+    }
+
+    .overview-navbar {
+        font-size: 1.5em;
     }
 }
 
@@ -170,6 +179,14 @@ label {
         font-size: 2em; 
         margin-left: 20%;
         margin-top: 1%;
+    }    
+
+    .overview-navbar {
+        width: 15%;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        margin-left: 90%;
     }
 }
 
@@ -178,6 +195,10 @@ label {
         font-size: 1.7em; 
         margin-left: 20%;
         margin-top: 1%;
+    }
+
+    .overview-navbar {
+        margin-left: 87%;
     }
 }
 
@@ -190,6 +211,10 @@ label {
         margin-left: 20%;
         margin-top: 1%;
     }
+
+    .overview-navbar {
+        margin-left: 84%;
+    }
 }
 
 @media(max-width: 666px) {
@@ -197,6 +222,11 @@ label {
         font-size: 1.4em; 
         margin-left: 12%;
         margin-top: 1%;
+    }
+
+    .overview-navbar {
+        margin-left: 80%;
+        width: 20%;
     }
 }
 
@@ -229,5 +259,11 @@ label {
 
     .select {
         margin-top: 5px;
+    }
+
+    .overview-navbar {        
+        width: 30%;
+        margin-left: 76%;
+        font-size: 1em;
     }
 }

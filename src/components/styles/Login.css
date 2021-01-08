@@ -251,3 +251,8 @@ i {
     font-size: 1.2rem !important;
   }
 }
+
+.incorrect-form {
+  font-size: 1.2em;
+  color: red;
+}

@@ -7,8 +7,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import './styles/Overview.css'
 import UnlockPasswordButton from './overview/UnlockPasswordButton'
-
-
+import OverviewNavbar from './overview/OverviewNavbar'
 
 function Overview() {
     const [userName, setUserName] = useState("");
@@ -162,6 +161,7 @@ function Overview() {
 
     return (
         <div className="background">
+            <OverviewNavbar />
             <h1 className="overview-title">Your Job Applications</h1>
             <Table className="border-table">
             <Thead>

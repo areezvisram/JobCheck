@@ -42,6 +42,7 @@
 .overview-title {
     font-size: 4em;
     text-decoration: underline;
+    margin-top: -20px;
 }
 
 .password-input {
