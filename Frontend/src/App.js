@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Overview from "./components/Overview";
 import AddJob from "./components/AddJob"
 import EditJob from "./components/EditJob"
+import ResetPasswordAuth from "./components/resetPassword/ResetPasswordAuth"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/overview" component={Overview} />
           <Route path="/addJob" component={AddJob}/>
           <Route path="/editJob" component={EditJob}/>
+          <Route path="/reset_password" component={ResetPasswordAuth}/>
           <Route component={Error} />
         </Switch>
     </div>

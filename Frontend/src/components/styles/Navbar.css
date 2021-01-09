@@ -3,6 +3,8 @@
     text-align: right;
     font-size: 2.2em;
     background-color: #f7f8fc;
+    width: 30%;
+    float: right;
 
 }
 
@@ -17,5 +19,44 @@
 @media (max-width: 600px) {
     .navbar {
         font-size: 1.8em;
+    }
+}
+
+@media(max-width: 1750px) {
+    .navbar {
+        width: 35%;
+    }
+}
+
+@media(max-width: 1500px) {
+    .navbar {
+        font-size: 2em;
+    }
+}
+
+
+@media(max-width: 1415px) {
+    .navbar {
+        width: 40%;
+    }
+}
+
+@media(max-width: 1215px) {
+    .navbar {
+        width: 42%;
+        font-size: 1.8em;
+    }
+}
+
+@media(max-width: 1045px) {
+    .navbar {
+        width: 45%;
+        font-size: 1.8em;
+    }
+}
+
+@media(max-width: 980px) {
+    .navbar {        
+        font-size: 1.5em;
     }
 }

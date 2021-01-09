@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
+import '../styles/OverviewComponents.css'
 
-function EditJobForm({application_id, userpass}) {
+function EditJobForm({application_id, userpass, onClickFunction}) {
     const [status, setStatus] = useState("");
 
-    const history = useHistory();
+    // const history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,10 +29,12 @@ function EditJobForm({application_id, userpass}) {
         .then((data) => {
           console.log(data);
           if(data['status'] === 1) {
-            history.push({
-                pathname: "/overview",
-                state: { comingFrom: "editJob", login:userpass },
-              });
+            // history.push({
+            //     pathname: "/overview",
+            //     state: { comingFrom: "editJob", login:userpass },
+            //   });
+
+            onClickFunction();
           }
         })
         .catch(error => alert(error));
@@ -57,7 +60,7 @@ function EditJobForm({application_id, userpass}) {
                 <option value="Accepted">Accepted</option>
                 <option value="Rejected">Rejected</option>
             </select><br></br>
-            <button type="submit" disabled={!validateForm()}>Submit</button>
+            <button type="submit" disabled={!validateForm()} className="submit-button">Submit</button>
         
         </form>
     )

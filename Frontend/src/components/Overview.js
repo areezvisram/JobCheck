@@ -3,6 +3,11 @@ import { useLocation, useHistory } from "react-router-dom";
 import AddJobButton from './overview/AddJobButton';
 import DeleteJobButton from './overview/DeleteJobButton';
 import EditJobButton from './overview/EditJobButton'
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import './styles/Overview.css'
+import UnlockPasswordButton from './overview/UnlockPasswordButton'
+import OverviewNavbar from './overview/OverviewNavbar'
 
 function Overview() {
     const [userName, setUserName] = useState("");
@@ -10,7 +15,8 @@ function Overview() {
     const [id, setId] = useState("");
     const history = useHistory();
     const location = useLocation();
-    const [userPassAdd, setUserPassAdd] = useState("");
+    const [userPassAdd, setUserPassAdd] = useState("");    
+    const [passwordState, setPasswordState] = useState("password")
     var token = '';
     var userpass = '';
     
@@ -129,34 +135,57 @@ function Overview() {
         checkLocation();
     },[]);
 
-   
+    function updatePasswordState() {
+        setPasswordState("text")
+    }
 
+    function renderTableData() {
+        return jobApplications.map((data, index) => {
+            const { company, position, application_status, application_deadline, documents_required, link_to_application, portal_password } = data;
+            return (
+                <Tr>
+                <Td className="border">{company}</Td>
+                <Td className="border">{position}</Td>
+                <Td className="border">{application_status}</Td>
+                <Td className="border">{application_deadline}</Td>
+                <Td className="border">{documents_required}</Td>
+                <Td className="border">{link_to_application}</Td>
+                <Td className="border"><input type={passwordState} value={portal_password} readOnly className="password-input"></input></Td>
+                <Td className="border"><EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton><DeleteJobButton application_id={data.id}></DeleteJobButton></Td>
+
+                {/* application_id={data.id} userpass={userPassAdd} */}
+            </Tr>
+            )
+        })
+    }
 
     return (
-        <div>
-            <h1>{userName}</h1>
-            {jobApplications.map((data, key) => {
-                return (
-                    <div key={key}>
-                        <h4>Company: {data.company}</h4>
-                        <p>Position: {data.position}</p>
-                        <p>Application Status: {data.application_status}</p>
-                        <p>Application Deadline: {data.application_deadline}</p>
-                        <p>Documents: {data.documents_required}</p>
-                        <p>Link to Application: {data.link_to_application}</p>
-                        <p>Portal Password: {data.portal_password}</p>
-                        <p>ID: {data.id}</p>
-                        <DeleteJobButton application_id={data.id}></DeleteJobButton>
-                        <EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton>
-                    </div>
-                )
-            })}
+        <div className="background">
+            <OverviewNavbar />
+            <h1 className="overview-title">Your Job Applications</h1>
+            <Table className="border-table">
+            <Thead>
+                <Tr>
+                    <Th className="border">Company</Th>
+                    <Th className="border">Position</Th>
+                    <Th className="border">Application Status</Th>
+                    <Th className="border">Application Deadline</Th>
+                    <Th className="border">Documents</Th>
+                    <Th className="border">Link To Application</Th>
+                    <Th className="border">Portal Password</Th>
+                    <Th className="border">Options</Th>
+                </Tr>
+            </Thead>
+            <Tbody>
+                {renderTableData()}
+            </Tbody>
+            </Table>
 
-            <AddJobButton user_id={id} userpass={userPassAdd}></AddJobButton>
-            
-        </div>
-    
-    
+            <div className="overview-buttons">
+                <AddJobButton user_id={id} userpass={userPassAdd} className="flex_child"></AddJobButton>
+                <UnlockPasswordButton clickHandler={updatePasswordState} className="flex_child" />
+            </div>
+        </div>  
     );
 }
 

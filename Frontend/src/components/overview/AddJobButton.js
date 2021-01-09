@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
+import '../styles/OverviewComponents.css'
 
 function AddJobButton({user_id, userpass}) {
     const history = useHistory();
@@ -10,8 +11,8 @@ function AddJobButton({user_id, userpass}) {
         })
     }
     return (
-        <button onClick={buttonOnClick}>
-            Add Job
+        <button onClick={buttonOnClick} className="add-button">
+            + Add Job
         </button>
     )
 }

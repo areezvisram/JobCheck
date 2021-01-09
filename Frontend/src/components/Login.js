@@ -8,6 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   //const [loggedIn, setLoginStatus] = useState(false);
   const history = useHistory();
+  const [errorShow, setErrorShow] = useState('none')
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -39,53 +40,37 @@ export default function Login() {
           });
         }
       })
-      .catch(error => alert(error));
+      .catch((data) => {
+        setErrorShow("block");
+        setPassword("");
+      });
   }
 
   return (
-    <div id="form_wrapper">
-    <div id="form_left">
-      <img src={logo} alt="computer icon" />
+    <div className="background">
+      <div id="form_wrapper">
+      <div id="form_left">
+        <img src={logo} alt="computer icon" />
+      </div>
+      <form id="form_right" onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <div className="input_container">
+          <i className="fas fa-envelope"></i>
+          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>
+        </div>
+        <div className="input_container">
+          <i className="fas fa-lock"></i>
+          <input placeholder="Password" type="password" name="Password" id="field_password" className="input_field" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        </div>
+        <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Login</button>
+        <span className="incorrect-form" style={{display: `${errorShow}`}}>Login Failed. Please Try Again</span>
+        <span>Forgot <a href="#"> Username / Password ?</a></span>
+        <span id="create_account">
+          <a href="\register">Don't have an account? Register Now ➡ </a>
+        </span>
+      </form>
     </div>
-    <form id="form_right" onSubmit={handleSubmit}>
-      <h1>Login</h1>
-      <div className="input_container">
-        <i className="fas fa-envelope"></i>
-        <input
-          placeholder="Email"
-          value = {email}
-          onChange={(e) => setEmail(e.target.value)}
-          // type="email"
-          name="Email"
-          id="field_email"
-          className="input_field"
-        />
-      </div>
-      <div className="input_container">
-        <i className="fas fa-lock"></i>
-        <input
-          placeholder="Password"
-          type="password"
-          name="Password"
-          id="field_password"
-          className="input_field"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button
-        type="submit"
-        value="Login"
-        id="input_submit"
-        className="input_field"
-        disabled={!validateForm()}
-      >Login</button>
-      <span>Forgot <a href="#"> Username / Password ?</a></span>
-      <span id="create_account">
-        <a href="\register">Don't have an account? Register Now ➡ </a>
-      </span>
-    </form>
-  </div>
+   </div>
     // <div classNameName="Login">
     //   <form onSubmit={handleSubmit}>
     //     <FormGroup controlId="email" size="large">
