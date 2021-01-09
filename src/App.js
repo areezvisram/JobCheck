@@ -20,7 +20,7 @@ function App() {
           <Route path="/overview" component={Overview} />
           <Route path="/addJob" component={AddJob}/>
           <Route path="/editJob" component={EditJob}/>
-          <Route path="/reset_password/:username/:timestamp" component={ResetPasswordAuth}/>
+          <Route path="/reset_password" component={ResetPasswordAuth}/>
           <Route component={Error} />
         </Switch>
     </div>

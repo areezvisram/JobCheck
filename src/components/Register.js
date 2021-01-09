@@ -9,6 +9,7 @@ function Register() {
     const [confirmEmail, setConfirmEmail] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const history = useHistory();
+    const [errorShow, setErrorShow] = useState('none')
   
     function validateForm() {
       return (email.length > 0 && password.length > 0) && (confirmEmail === email) && (confirmPassword === password);
@@ -46,7 +47,10 @@ function Register() {
             pathname: "/login",
           });
         })
-        .catch(error => alert(error));
+        .catch((data) => {
+          setErrorShow("block");
+          setPassword("");
+        });
     }
   
     return (
@@ -74,6 +78,7 @@ function Register() {
             <input placeholder="Confirm Password" type="password" name="Password" id="field_password" className="input_field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
           </div>        
           <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Register</button>
+          <span className="incorrect-form" style={{display: `${errorShow}`}}>Login Failed. Please Try Again</span>
           <span id="create_account">
             <a href="\login">Already have an account? Login now ➡ </a>
           </span>
