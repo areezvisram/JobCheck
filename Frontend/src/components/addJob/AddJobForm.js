@@ -36,7 +36,7 @@ function AddJobForm({user_id, token, userpass}) {
             body: JSON.stringify(data)
         };
 
-        fetch("http://127.0.0.1:5000/api/addApplication", obj)
+        fetch("https://job-check.herokuapp.com/api/addApplication", obj)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

@@ -24,7 +24,7 @@ function EditJobForm({application_id, userpass, onClickFunction}) {
             body: JSON.stringify(data)
         }
 
-        fetch("http://127.0.0.1:5000/api/updateApplication", obj)
+        fetch("https://job-check.herokuapp.com/api/updateApplication", obj)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
