@@ -10,14 +10,14 @@ function EditJob() {
 
     function checkLocation() {
         try {
-            let comingFrom = location.state.comingFrom;
+            let comingFrom = location.state.comingFrom;            
             const application_id = location.state.application_id;
             const userPass = location.state.userpass;
             setUserPass(userPass);
             setApplicationId(application_id);
         } catch(error) {
             history.push({
-                pathname: "/"
+                pathname: "/login"
             });
         }
     }

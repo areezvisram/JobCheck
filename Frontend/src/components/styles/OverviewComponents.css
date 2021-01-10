@@ -162,6 +162,12 @@ label {
     margin-top: 5px;
 }
 
+.contact-navbar {
+    text-align: right;
+    font-size: 2em;
+    margin-top: -90px;    
+}
+
 @media(max-width: 1335px) {
     .add-form {
         font-size: 2em; 
@@ -187,6 +193,20 @@ label {
         display: flex;
         flex-direction: column;
         margin-left: 90%;
+    }
+}
+
+@media(max-width: 940px) {
+    .contact-navbar {
+        display: none;
+    }
+
+    .overview-navbar {
+        display: none;
+    }
+
+    .overview-title {
+        margin-top: 15px !important;
     }
 }
 
@@ -246,6 +266,12 @@ label {
     }
 }
 
+@media(max-width: 625px) {
+    .overview-title {
+        font-size: 2.5em !important;
+    }
+}
+
 @media(max-width: 500px) {
     .add-form {
         font-size: 1.2em; 
@@ -265,5 +291,9 @@ label {
         width: 30%;
         margin-left: 76%;
         font-size: 1em;
+    }
+
+    .overview-title {
+        font-size: 2.2em !important;
     }
 }

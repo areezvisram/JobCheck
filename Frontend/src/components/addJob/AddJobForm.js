@@ -98,8 +98,7 @@ function AddJobForm({user_id, token, userpass}) {
                 <option value="Transcript">Transcript</option>
                 <option value="Essay Questions">Essay Questions</option>
             </select><br></br>
-            <button type="submit" disabled={!validateForm()} className="submit-button-form">Submit</button>
-        
+            <button type="submit" disabled={!validateForm()} className="submit-button-form">Submit</button>        
         </form>
     )
 }
