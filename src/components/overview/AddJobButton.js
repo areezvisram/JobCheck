@@ -7,7 +7,7 @@ function AddJobButton({user_id, userpass}) {
     function buttonOnClick() {
         history.push({
             pathname: "/addJob",
-            state: {comingFrom: "login", user_id: user_id, userpass:userpass }
+            state: {comingFrom: "overview", user_id: user_id, userpass:userpass }
         })
     }
     return (

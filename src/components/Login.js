@@ -56,7 +56,7 @@ export default function Login() {
         <h1>Login</h1>
         <div className="input_container">
           <i className="fas fa-envelope"></i>
-          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>
+          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field" type="text"/>
         </div>
         <div className="input_container">
           <i className="fas fa-lock"></i>
@@ -64,7 +64,7 @@ export default function Login() {
         </div>
         <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Login</button>
         <span className="incorrect-form" style={{display: `${errorShow}`}}>Login Failed. Please Try Again</span>
-        <span>Forgot <a href="#"> Username / Password ?</a></span>
+        <span>Forgot <a href="/reset-password-form"> Username / Password ?</a></span>
         <span id="create_account">
           <a href="\register">Don't have an account? Register Now ➡ </a>
         </span>

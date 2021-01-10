@@ -12,13 +12,20 @@ function AddJob() {
     function checkLocation() {
         try {
             let comingFrom = location.state.comingFrom;
-            const user_id = location.state.user_id;
-            const userPass = location.state.userpass;
-            setUserPass(userPass);
-            setUserId(user_id);
+            if(comingFrom === "overview") {
+                const user_id = location.state.user_id;
+                const userPass = location.state.userpass;
+                setUserPass(userPass);
+                setUserId(user_id);
+            } else {
+                history.push({
+                    pathname: "/overview"
+                });
+            }
+
         } catch(error) {
             history.push({
-                pathname: "/overview"
+                pathname: "/login"
             });
         }
     }
@@ -29,7 +36,7 @@ function AddJob() {
 
     return (
         <div className="background">
-            <h1 className="overview-title">Add New Job Application</h1>
+            <h1 className="overview-title" style={{ marginTop: "15px"}}>Add New Job Application</h1>
             <AddJobForm user_id={userId} userpass={userpass}></AddJobForm>
         </div>
     )

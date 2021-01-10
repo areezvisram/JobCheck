@@ -63,11 +63,11 @@ function Register() {
           <h1>Register</h1>
           <div className="input_container">
             <i className="fas fa-envelope"></i>
-            <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
+            <input type="email" placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
           </div>
           <div className="input_container">
             <i className="fas fa-envelope"></i>
-            <input placeholder="Confirm Email" value = {confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
+            <input type="email" placeholder="Confirm Email" value = {confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} name="Email" id="field_email" className="input_field"/>          
           </div>        
           <div className="input_container">
             <i className="fas fa-lock"></i>
@@ -78,7 +78,7 @@ function Register() {
             <input placeholder="Confirm Password" type="password" name="Password" id="field_password" className="input_field" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
           </div>        
           <button type="submit" value="Login" id="input_submit" className="input_field" disabled={!validateForm()}>Register</button>
-          <span className="incorrect-form" style={{display: `${errorShow}`}}>Login Failed. Please Try Again</span>
+          <span className="incorrect-form" style={{display: `${errorShow}`}}>Registration Failed. Please Try Again</span>
           <span id="create_account">
             <a href="\login">Already have an account? Login now ➡ </a>
           </span>
