@@ -7,6 +7,8 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 from flask_cors import CORS, cross_origin
 from flask_migrate import Migrate
+from flask_mail import Mail, Message
+import jwt, time, json
 
 # initialization
 app = Flask(__name__)
@@ -15,12 +17,17 @@ app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = "jobcheck.help@gmail.com"
+app.config['MAIL_PASSWORD'] = "JobCheck2021"
 
 # extensions
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 auth = HTTPBasicAuth()
-
+mail = Mail(app)
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -237,3 +244,85 @@ def application_update():
 def create_tables():
     db.create_all()
 
+
+def get_reset_token(user, expires=500):
+    data = {"reset_password": user.username}
+    return jwt.encode(data, 'the quick brown fox jumps over the lazy dog', 'HS256').decode('utf-8')
+
+def send_email(user):
+    token = get_reset_token(user)
+
+    msg = Message()
+    msg.subject = "Flask App Password Reset"
+    msg.sender = app.config['MAIL_USERNAME']
+    # msg.recipients = ['areez.visram10@gmail.com']    
+    msg.recipients = [user.username]
+    msg.body = "Hello. You recently requested to reset your password. Please follow the following link:" + "\n" + "http://localhost:3000/reset_password?token="  + str(token) + "\n" + "If you did not request this password change, please ignore this email."
+    mail.send(msg)
+
+
+@app.route('/api/sendEmail', methods=["POST"])
+def reset_password():
+
+    req_json = request.get_json()
+    username = req_json['username'] if req_json['username'] else None
+
+    try:
+        user = User.query.filter_by(username=username).first()
+    except:
+        response = {'status': 0, 'error': 'User does not exist'}
+        return jsonify(response)
+
+    send_email(user)
+
+    response = {'status': 1, 'message': "Email sent", 'user_email': username, 'user_id': user.id}
+
+    return jsonify(response)
+
+def verify_reset_token(token):
+    try:
+        username = jwt.decode(token, 'the quick brown fox jumps over the lazy dog', algorithms=['HS256'])['reset_password']
+    except Exception as e:
+        print(e)
+        return None
+    return User.query.filter_by(username=username).first()
+
+@app.route('/api/resetPassword', methods=["POST"])
+@cross_origin()
+def password_update():
+    req_json = request.get_json()        
+    password = req_json['password'] if req_json['password'] else None
+    token = req_json['token'] if req_json['token'] else None
+
+    user = verify_reset_token(token)    
+
+    if user == None:
+        response = {'status': 0, 'error': 'Invalid token'}
+        return jsonify(response)
+
+    user.hash_password(password)
+
+    db.session.commit()
+
+    response = {'status': 1, 'message': "Password updated"}
+
+    return jsonify(response)   
+
+@app.route('/api/contact', methods=["POST"])
+@cross_origin()
+def contact():
+    req_json = request.get_json()        
+    name = req_json['name'] if req_json['name'] else None
+    email = req_json['email'] if req_json['email'] else None
+    message = req_json['message'] if req_json['message'] else None
+
+    msg = Message()
+    msg.subject = "JobCheck Contact"
+    msg.sender = app.config['MAIL_USERNAME']
+    msg.recipients = ['areez.visram10@gmail.com']        
+    msg.body = "Someone contacted you from JobCheck." + "\n" + "Name: " + str(name) + "\n" + "Email: " + str(email) + "\n" + "Message: " + str(message)
+    mail.send(msg)
+
+    response = {'status': 1, 'message': "Contact Sent."}
+
+    return jsonify(response)  
