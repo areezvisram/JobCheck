@@ -255,8 +255,9 @@ def send_email(user):
     msg = Message()
     msg.subject = "Flask App Password Reset"
     msg.sender = app.config['MAIL_USERNAME']
-    msg.recipients = ['areez.visram10@gmail.com']    
-    msg.body = "Hello. You recently requested to reset your password. Please follow the following link:" + "\n" + "http://localhost:3000/reset_password?token="  + str(token)  
+    # msg.recipients = ['areez.visram10@gmail.com']    
+    msg.recipients = [user.username]
+    msg.body = "Hello. You recently requested to reset your password. Please follow the following link:" + "\n" + "http://localhost:3000/reset_password?token="  + str(token) + "\n" + "If you did not request this password change, please ignore this email."
     mail.send(msg)
 
 
@@ -305,4 +306,23 @@ def password_update():
 
     response = {'status': 1, 'message': "Password updated"}
 
-    return jsonify(response)     
+    return jsonify(response)   
+
+@app.route('/api/contact', methods=["POST"])
+@cross_origin()
+def contact():
+    req_json = request.get_json()        
+    name = req_json['name'] if req_json['name'] else None
+    email = req_json['email'] if req_json['email'] else None
+    message = req_json['message'] if req_json['message'] else None
+
+    msg = Message()
+    msg.subject = "JobCheck Contact"
+    msg.sender = app.config['MAIL_USERNAME']
+    msg.recipients = ['areez.visram10@gmail.com']        
+    msg.body = "Someone contacted you from JobCheck." + "\n" + "Name: " + str(name) + "\n" + "Email: " + str(email) + "\n" + "Message: " + str(message)
+    mail.send(msg)
+
+    response = {'status': 1, 'message': "Contact Sent."}
+
+    return jsonify(response)  
