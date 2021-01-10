@@ -1,0 +1,230 @@
+.background {
+    height: 100vh;
+    font-family: 'Fredoka One', cursive;
+    background-image: linear-gradient(
+      to right,
+      var(--body_gradient_left),
+      var(--body_gradient_right)
+    );
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --body_gradient_left: #1c9954;
+    --body_gradient_right: #155294;
+    --form_bg: #ffffff;
+    --input_bg: #e5e5e5;
+    --input_hover: #eaeaea;
+    --submit_bg: #1fcc44;
+    --submit_hover: #40e263;
+    --icon_color: #6b6b6b;
+    overflow-y: scroll;
+}
+
+.border {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.border-table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 90vw;
+    margin-left: 5%;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 2em;
+    /* font-family: 'Fredoka One', cursive; */
+    background-color: white;
+}
+
+.overview-title {
+    font-size: 4em;
+    text-decoration: underline;
+    margin-top: -20px;
+}
+
+.password-input {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+.overview-buttons {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-child {
+    -webkit-box-flex: 1 1 auto;
+    -moz-box-flex:  1 1 auto;
+    -webkit-flex:  1 1 auto;
+    -ms-flex:  1 1 auto;
+    flex:  1 1 auto;
+}
+
+@media(max-width: 782px) {
+    .overview-title {
+        font-size: 3em;
+    } 
+}
+
+@media(max-width:1650px) {
+    .border-table {
+        font-size: 1.5em;
+    }
+
+    .edit-button {
+        font-size: 0.7em;
+        width: 80%;
+    }
+
+    .delete-button {
+        font-size: 0.7em;
+        width: 80%;
+    }
+
+    .add-button {
+        font-size: 1.5em;
+    }
+
+    .eye-button {
+        font-size: 1.5em;
+    }
+}
+
+@media(max-width:1280px) {
+    .border-table {
+        font-size: 1.3em;
+    }
+
+    .add-button {
+        font-size: 1.3em;
+    }
+
+    .eye-button {
+        font-size: 1.3em;
+    }
+}
+
+@media(max-width:1120px) {
+    .border-table {
+        font-size: 1.2em;
+    }
+}
+
+/* Styling taken from Responsive Table package. Just made to turn into row table at width = 1000 px */
+@media screen and (max-width: 1000px) { 
+    .responsiveTable table,
+    .responsiveTable thead,
+    .responsiveTable tbody,
+    .responsiveTable th,
+    .responsiveTable td,
+    .responsiveTable tr {
+      display: block;
+    }
+  
+    .responsiveTable thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      border-bottom: 2px solid #333;
+    }
+  
+    .responsiveTable tbody tr {
+      border: 1px solid #000;
+      padding: .25em;
+    }
+  
+    .responsiveTable td.pivoted {      
+      border: none !important;
+      position: relative;
+      padding-left: calc(50% + 10px) !important;
+      text-align: left !important;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+  
+    .responsiveTable td .tdBefore {      
+      position: absolute;
+      display: block;      
+      left: 1rem;
+      width: calc(50% - 20px);
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      text-align: left !important;
+      font-weight: 600;
+    }
+
+    .password-input {        
+        text-align: left;
+    }
+
+    .edit-button {
+        width: 30%;
+        margin-right: 10px;        
+    }
+
+    .delete-button {
+        width: 30%;
+    }
+
+    .add-button {
+        font-size: 1.1em;
+        width: 22%;
+    }
+
+    .eye-button {
+        font-size: 1.1em;
+        width: 22%;
+    }
+}
+
+@media(max-width: 500px) {
+    .border-table {
+        font-size: 0.8em;
+    }
+
+    .add-button {
+        width: 25%;
+        margin-left: 22%;
+    }
+
+    .eye-button {
+        width: 30%;
+    }
+}
+
+@media(max-width: 350px) {
+    .border-table {
+        font-size: 0.6em;
+    }
+
+    .add-button {
+        width: 40%;
+        height: 30%;
+        margin-left: 10%;
+    }
+
+    .eye-button {        
+        width: 40%;
+        height: 50%;        
+    }
+
+    .edit-button {
+        width: 60%;
+    }
+
+    .delete-button {
+        width: 60%;
+    }
+
+    .overview-title {
+        font-size: 2.5em;
+    }
+}
+  

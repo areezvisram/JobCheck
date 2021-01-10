@@ -1,0 +1,78 @@
+.bm-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: black;
+    transition: color 0.2s;
+    border: none;
+  }
+
+.bm-item:hover {
+    border: none;
+}
+
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 25px;
+    top: 36px;
+  }
+
+  .bm-burger-bars {
+    background: black;
+  }
+
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  .bm-cross {
+    background: black;
+  }
+
+  .bm-menu {
+    background:white;
+    padding: 3em 3em 0;
+    font-size: 1.75em;
+  }
+
+  .bm-item-list {
+    color: black;
+  }
+
+  .bm-overlay {
+    background: red;
+    
+  }
+
+  .burger-menu {
+    font-family: 'Fredoka One', cursive;
+    display: none;
+  }
+
+  .contact-burger-menu {
+    font-family: 'Fredoka One', cursive;
+    display: none;
+    height: 100vh;
+    font-family: 'Fredoka One', cursive;
+    position: fixed;
+  }
+
+  a:active, a:focus {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+  }
+
+  @media(max-width: 940px) {
+      .burger-menu {
+          display: block;          
+      }
+      .contact-burger-menu {
+        display: block;
+      }
+  }
+
