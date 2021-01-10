@@ -35,7 +35,7 @@ function DeleteJobButton({ application_id }) {
             },
             body: JSON.stringify(data)
         };
-        fetch("http://127.0.0.1:5000/api/deleteApplication", obj)
+        fetch("https://job-check.herokuapp.com/api/deleteApplication", obj)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);

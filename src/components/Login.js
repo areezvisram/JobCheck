@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   //const [loggedIn, setLoginStatus] = useState(false);
   const history = useHistory();
-  const [errorShow, setErrorShow] = useState('none')
+  const [errorShow, setErrorShow] = useState('none');
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -28,7 +28,7 @@ export default function Login() {
       },
     };
 
-    fetch("http://127.0.0.1:5000/api/token", obj)
+    fetch("https://job-check.herokuapp.com/api/token", obj)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
