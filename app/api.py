@@ -93,6 +93,9 @@ def verify_password(username_or_token, password):
     g.user = user
     return True
 
+@app.route('/')
+def home_page():
+    return "JobCheck Server Home Page"
 
 @app.route('/api/users', methods=['POST'])
 def new_user():
@@ -191,21 +194,29 @@ def makeJson(result):
 @app.route('/viewUsers')
 def users_view():
     users = User.query.all()
-    user_dict = {'users': []}
+    counter = 0
+    user_dict = {'users': [], 'total_users': 0}
 
     for user in users:
-        user_dict['users'].append(makeJson(dict(user.__dict__)))
+        counter = counter + 1
+        user_dict['users'].append(user.username)        
 
+    user_dict['total_users'] = counter
     return jsonify(user_dict)
 
 @app.route('/viewApplications')
 def applications_view():
     applications = JobApplication.query.all()
-    application_dict = {'applications': []}
+    counter = 0
+    application_dict = {'applications': [], 'total_applications': 0}
 
     for application in applications:
-        application_dict['applications'].append(makeJson(dict(application.__dict__)))
+        counter = counter + 1
+        application_dict['applications'].append("id: " + str(application.user_id))
+        application_dict['applications'].append("company: " + str(application.company))
+        application_dict['applications'].append("position: " + str(application.position))
     
+    application_dict['total_applications'] = counter
     return jsonify(application_dict)
 
 @app.route('/api/deleteApplication', methods=["POST"])
