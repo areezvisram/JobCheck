@@ -56,7 +56,7 @@ export default function Login() {
         <h1>Login</h1>
         <div className="input_container">
           <i className="fas fa-envelope"></i>
-          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field" type="text"/>
+          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field" type="email"/>
         </div>
         <div className="input_container">
           <i className="fas fa-lock"></i>
