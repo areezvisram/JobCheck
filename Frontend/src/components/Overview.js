@@ -20,7 +20,12 @@ function Overview() {
     const [passwordState, setPasswordState] = useState("password")
     var token = '';
     var userpass = '';
-    
+
+    window.onpopstate = (e) => {
+        history.push({
+            pathname: "/login"
+          });
+    }
 
     function checkLocation() {
         try {
@@ -39,7 +44,7 @@ function Overview() {
                     },
                   };
               
-                  fetch("http://127.0.0.1:5000/api/token", obj)
+                  fetch("https://job-check.herokuapp.com/api/token", obj)
                     .then((response) => response.json())
                     .then((data) => {
                       console.log(data);
@@ -47,7 +52,7 @@ function Overview() {
                       if (response["status"] === "OK") {
                         token = response['token'];
                         var login = token + ":unused";
-                        fetch("http://127.0.0.1:5000/api/resource", {
+                        fetch("https://job-check.herokuapp.com/api/resource", {
                                 headers: {
                                 Accept: "application/json",
                                 "Access-Control-Allow-Origin": "*",
@@ -60,7 +65,7 @@ function Overview() {
                                 setUserName(data["name"]);
                                 var id = data["id"];
                                 setId(id);
-                                fetch("http://127.0.0.1:5000/api/getApplications", {
+                                fetch("https://job-check.herokuapp.com/api/getApplications", {
                                     method: 'POST',
                                     headers: {
                                         Accept: "application/json",
@@ -89,7 +94,7 @@ function Overview() {
                 
     
             var login = token + ":unused";
-            fetch("http://127.0.0.1:5000/api/resource", {
+            fetch("https://job-check.herokuapp.com/api/resource", {
                     headers: {
                     Accept: "application/json",
                     "Access-Control-Allow-Origin": "*",
@@ -102,7 +107,7 @@ function Overview() {
                     setUserName(data["name"]);
                     var id = data["id"];
                     setId(id);
-                    fetch("http://127.0.0.1:5000/api/getApplications", {
+                    fetch("https://job-check.herokuapp.com/api/getApplications", {
                         method: 'POST',
                         headers: {
                             Accept: "application/json",
@@ -152,9 +157,7 @@ function Overview() {
                 <Td className="border">{documents_required}</Td>
                 <Td className="border">{link_to_application}</Td>
                 <Td className="border"><input type={passwordState} value={portal_password} readOnly className="password-input"></input></Td>
-                <Td className="border"><EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton><DeleteJobButton application_id={data.id}></DeleteJobButton></Td>
-
-                {/* application_id={data.id} userpass={userPassAdd} */}
+                <Td className="border"><EditJobButton application_id={data.id} userpass={userPassAdd}></EditJobButton><DeleteJobButton application_id={data.id}></DeleteJobButton></Td>                
             </Tr>
             )
         })

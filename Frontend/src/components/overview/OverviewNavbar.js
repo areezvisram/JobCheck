@@ -6,7 +6,7 @@ function OverviewNavbar() {
     return (
         <div className="overview-navbar">
             <Link to="/" className="link">Log Out</Link>            
-            <Link to="/register" className="link">Contact</Link>
+            <Link to="/contact" className="link">Contact</Link>
         </div>
     )
 }

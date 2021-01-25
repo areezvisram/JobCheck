@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   //const [loggedIn, setLoginStatus] = useState(false);
   const history = useHistory();
-  const [errorShow, setErrorShow] = useState('none')
+  const [errorShow, setErrorShow] = useState('none');
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -28,7 +28,7 @@ export default function Login() {
       },
     };
 
-    fetch("http://127.0.0.1:5000/api/token", obj)
+    fetch("https://job-check.herokuapp.com/api/token", obj)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -56,7 +56,7 @@ export default function Login() {
         <h1>Login</h1>
         <div className="input_container">
           <i className="fas fa-envelope"></i>
-          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field" type="text"/>
+          <input placeholder="Email" value = {email} onChange={(e) => setEmail(e.target.value)} name="Email" id="field_email" className="input_field" type="email"/>
         </div>
         <div className="input_container">
           <i className="fas fa-lock"></i>

@@ -4,6 +4,7 @@ import '../styles/OverviewComponents.css'
 function PasswordForm({ clickHandler, submitClickHandler }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorShow, setErrorShow] = useState('none');
     
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -23,7 +24,7 @@ function PasswordForm({ clickHandler, submitClickHandler }) {
           },
         };
     
-        fetch("http://127.0.0.1:5000/api/token", obj)
+        fetch("https://job-check.herokuapp.com/api/token", obj)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -34,7 +35,10 @@ function PasswordForm({ clickHandler, submitClickHandler }) {
                 
             }
           })
-          .catch(error => alert(error));
+          .catch((data) => {
+            setErrorShow("block");
+            setPassword("");
+          });
       }
 
     return (
@@ -49,6 +53,7 @@ function PasswordForm({ clickHandler, submitClickHandler }) {
                 <input placeholder="Password" type="password" name="Password" id="field_password" className="input_field" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <button type="submit" value="Login" className="submit-button-modal" disabled={!validateForm()}>Login</button>
+            <span className="incorrect-form" style={{display: `${errorShow}`}}>Login Failed. Please Try Again</span>
         </form>
     )
 }

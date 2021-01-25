@@ -6,18 +6,10 @@ import PasswordForm from '../passwordUnlock/PasswordForm';
 function UnlockPasswordButton({ clickHandler }) {
     const [show, setShow] = useState(false);
 
-    // const reload = () => {
-    //     window.location.reload();
-    // }
-
     const handleClose = () => {
         setShow(false);        
     }
 
-    // const handleCloseSubmit = () => {
-    //     setShow(false);
-    //     reload();
-    // }
     const handleShow = () => setShow(true);
 
     return (
